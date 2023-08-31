@@ -80,6 +80,38 @@ function App() {
                 </div>
             </section>
 
+            <section className="brandOverview">
+                <h3 className="allignLeft">Overzicht van onze beschikbare merken</h3>
+                <ul>
+                    {inventory.map((item) => <li key={`key-${item.type}`}>{item.brand}</li>)}
+                </ul>
+            </section>
+
+            <section>
+                {inventory.map((item) => {
+                    return (
+                        <div className="article-container-3" key={`key-${item.type}`}>
+                            <span className="image-product">
+                                <img src={item.sourceImg} alt="image-tv"/>
+                            </span>
+                            <article className="article-box-3">
+                                <h3>{collectProductName(item)}</h3>
+                                <h2>{collectProductPrice(item)}</h2>
+                                <h4>{collectConvertScreenSizes(item)}</h4>
+                                <ul className="productOptions">
+                                    {item.options.map((feature) => {
+                                        if (feature.applicable === true) {
+                                            return <li key={`key-${feature.name}`}><img className="iconSize" src={check} alt="Feature aanwezig"/>{feature.name}</li>
+                                        } else {
+                                            return <li key={`key-${feature.name}`}><img className="iconSize" src={minus} alt="Feature niet aanwezig"/>{feature.name}</li>
+                                        }
+                                    })}
+                                </ul>
+                            </article>
+                        </div>
+                )})}
+            </section>
+
         </main>
     )
 }

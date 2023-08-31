@@ -328,4 +328,60 @@ export let inventory = [
     },
 ];
 
+//
+// DEEL 2
+//
 
+//
+// OPDRACHT 1A
+//
+const listAllTvs = inventory.map((item) => item.type);
+console.log(listAllTvs);
+
+//
+// OPDRACHT 1B
+//
+const listAllSoldTvs = inventory.filter((item) => item.originalStock - item.sold === 0);
+console.log(listAllSoldTvs);
+
+//
+// OPDRACHT 1C
+//
+const findType = inventory.find((item) => item.type === 'NH3216SMART');
+console.log(findType);
+
+//
+// OPDRACHT 1D
+//
+const listSuitableForSport = inventory.map((item) => {
+    const suitableTrueFalse = item.refreshRate >= 100;
+    return {
+        name: `${item.brand} ${item.name}`,
+        suitable: suitableTrueFalse,
+    }
+});
+console.log(listSuitableForSport);
+
+//
+// OPDRACHT 1E
+//
+const findSportsTv = inventory.filter((item) => {
+    return item.availableSizes.find((size) => {
+        return size >= 65;
+    })
+});
+
+console.log(findSportsTv);
+
+//
+// OPDRACHT 1F
+//
+const tvWithAmbilight = inventory.filter((item) => {
+    const checkAmbi = item.options.find((nameOption) => {
+        return nameOption.name === "ambiLight";
+        })
+    if (checkAmbi.applicable === true ) {
+        return true;
+    }
+})
+console.log(tvWithAmbilight);
