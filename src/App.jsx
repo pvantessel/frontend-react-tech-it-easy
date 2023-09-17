@@ -13,15 +13,44 @@ import check from "./assets/check.png";
 function App() {
 
     function sortedByBestSeller() {
-        console.log("Meest verkocht eerst");
+
+        // DEEL 2 - OPD 3A
+        const sortedByAmountSold = inventory.sort((a,b) => b.sold - a.sold);
+        console.log(sortedByAmountSold)
+
+        // DEEL 1 - OPD 2F
+        // console.log("Meest verkocht eerst");
     }
 
     function sortedByCheapestTv() {
-        console.log("Goedkoopste eerst");
+
+        // DEEL 2 - OPD 3B
+        const sortedByPrice = inventory.sort((a,b) => a.price - b.price);
+        console.log(sortedByPrice)
+
+        // DEEL 1 - OPD 2F
+        // console.log("Goedkoopste eerst");
     }
 
     function sortedByBestSportsTv() {
-        console.log("Meest geschikt voor sport eerst");
+
+        // DEEL 2 - OPD 3C
+        const sortedByRefreshRate = inventory.sort((a,b) => b.refreshRate - a.refreshRate);
+        console.log(sortedByRefreshRate)
+
+        // DEEL 1 - OPD 2F
+        // console.log("Meest geschikt voor sport eerst");
+    }
+
+    function sortedByScreenSize() {
+
+        // DEEL 2 - BONUS 1
+        const sortedByInches = inventory.sort((a,b) => {
+            const maxSizeA = Math.max(...a.availableSizes);
+            const maxSizeB = Math.max(...b.availableSizes);
+            return maxSizeB - maxSizeA;
+        })
+        console.log(sortedByInches)
     }
 
     return (
@@ -77,7 +106,41 @@ function App() {
                     <button type="button" onClick={sortedByBestSeller}>Meest verkocht eerst</button>
                     <button type="button" onClick={sortedByCheapestTv}>Goedkoopste eerst</button>
                     <button type="button" onClick={sortedByBestSportsTv}>Meest geschikt voor sport eerst</button>
+                    {/*DEEL 2 - BONUS 1 */}
+                    <button type="button" onClick={sortedByScreenSize}>Grootste schermgroottes eerst</button>
                 </div>
+            </section>
+
+            <section className="brandOverview">
+                <h3 className="allignLeft">Overzicht van onze beschikbare merken</h3>
+                <ul>
+                    {inventory.map((item) => <li key={`key-${item.type}`}>{item.brand}</li>)}
+                </ul>
+            </section>
+
+            <section>
+                {inventory.map((item) => {
+                    return (
+                        <div className="article-container-3" key={`key-${item.type}`}>
+                            <span className="image-product">
+                                <img src={item.sourceImg} alt="image-tv"/>
+                            </span>
+                            <article className="article-box-3">
+                                <h3>{collectProductName(item)}</h3>
+                                <h2>{collectProductPrice(item)}</h2>
+                                <h4>{collectConvertScreenSizes(item)}</h4>
+                                <ul className="productOptions">
+                                    {item.options.map((feature) => {
+                                        if (feature.applicable) {
+                                            return <li key={`key-${feature.name}`}><img className="iconSize" src={check} alt="Feature aanwezig"/>{feature.name}</li>
+                                        } else {
+                                            return <li key={`key-${feature.name}`}><img className="iconSize" src={minus} alt="Feature niet aanwezig"/>{feature.name}</li>
+                                        }
+                                    })}
+                                </ul>
+                            </article>
+                        </div>
+                )})}
             </section>
 
         </main>

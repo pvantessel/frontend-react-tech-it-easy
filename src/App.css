@@ -131,6 +131,8 @@
     margin-right: 5px;
 }
 
+/*  Alle TVs block */
+
 button {
     font-size: 16px;
     padding: 5px 10px;
@@ -143,4 +145,48 @@ button {
     flex-direction: row;
     justify-content: flex-start;
     gap: 15px;
+}
+
+.brandOverview ul {
+    margin-bottom: 30px;
+}
+
+.allignLeft {
+    margin-left: 0;
+}
+
+.article-container-3 {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 100%;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    border-radius: 4px;
+    margin-bottom: 20px;
+}
+
+.article-box-3 {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    flex:2.5;
+}
+
+.article-box-3 h2 {
+    margin: 10px 0 30px 0;
+}
+
+.article-box-3 h3 {
+    margin: 0 0 10px 0;
+}
+
+
+.article-box-3 h4 {
+    margin: 10px 0 0 0;
+}
+
+.article-box-3 ul {
+    margin: 10px 0 0 0;
 }
