@@ -131,7 +131,7 @@ function App() {
                                 <h4>{collectConvertScreenSizes(item)}</h4>
                                 <ul className="productOptions">
                                     {item.options.map((feature) => {
-                                        if (feature.applicable === true) {
+                                        if (feature.applicable) {
                                             return <li key={`key-${feature.name}`}><img className="iconSize" src={check} alt="Feature aanwezig"/>{feature.name}</li>
                                         } else {
                                             return <li key={`key-${feature.name}`}><img className="iconSize" src={minus} alt="Feature niet aanwezig"/>{feature.name}</li>
